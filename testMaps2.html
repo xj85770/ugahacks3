@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Get data as JSON from a PHP file on the server.</h2>
+
+<p id="demo"></p>
+
+<script>
+
+var xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        myObj = JSON.parse(this.responseText);
+    	console.log(myObj)
+    	console.log(myObj.resourceSets[0].resources.length)
+        for(x = 0; x < myObj.resourceSets[0].resources.length; x++){
+        	console.log(myObj.resourceSets[0].resources[x].severity);
+        }
+    }
+};
+xmlhttp.open("GET", "http://dev.virtualearth.net/REST/v1/Traffic/Incidents/37,-105,45,-94?key=AtAWrDwvf9v0p3Ymboe3IigmSoTcWJo2T3ny75RNaCGoAkmvuj6YG01LdpqotWTY", true);
+xmlhttp.send();
+
+</script>
+
+</body>
+</html>

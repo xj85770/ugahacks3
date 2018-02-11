@@ -1,0 +1,20 @@
+<doctype html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<body>
+		<div class="myClass"></div>
+		<script type="text/javascript" src=".npm/jquery/3.3.1/jquery.min.js">
+			$.getJSON('http://dev.virtualearth.net/REST/v1/Traffic/Incidents/37,-105,45,-94?key=AtAWrDwvf9v0p3Ymboe3IigmSoTcWJo2T3ny75RNaCGoAkmvuj6YG01LdpqotWTY',function(data){
+				var items = [];
+				$.each(data, function(key,val){
+					items.push("<li id'" + key + "'>'" + val + "</li>");
+				});
+				console.log(items[0] + "hello")
+				$("<ul>",{
+					"class": "newlist",
+					html: items.join('')
+				}).appendTo("body");
+			});
+		</script>
+	</body>
+</html>
